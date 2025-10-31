@@ -4,11 +4,13 @@ import requests
 # Usa a API de testes que realmente existe
 EXTERNAL_BASE = os.getenv("EXTERNAL_API_URL", "https://jsonplaceholder.typicode.com")
 
+
 def fetch_all():
     url = f"{EXTERNAL_BASE}/posts"
     resp = requests.get(url, timeout=5)
     resp.raise_for_status()
     return resp.json()
+
 
 def fetch_by_id(item_id: int):
     url = f"{EXTERNAL_BASE}/posts/{item_id}"
@@ -17,6 +19,7 @@ def fetch_by_id(item_id: int):
         return None
     resp.raise_for_status()
     return resp.json()
+
 
 def create(data: dict):
     url = f"{EXTERNAL_BASE}/posts"
